@@ -1,10 +1,9 @@
 package com.travelport.myproject;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,7 +47,7 @@ public class AppUtils {
 
             // Load cities
             cityMap = new HashMap<String, City>();
-            iterateCodedFile("/input/FilesOfVendorCodes/RCTY.TXT", new ICodedFileLineCallback() {
+            iterateCodedFile("input/FilesOfVendorCodes/RCTY.TXT", new ICodedFileLineCallback() {
                 @Override
                 public void process(List<String> line) {
                     City newCity = new City(line);
@@ -58,7 +57,7 @@ public class AppUtils {
 
             // Load airlines
             airlineMap = new HashMap<String, Airline>();
-            iterateCodedFile("/input/FilesOfVendorCodes/RAIR.TXT", new ICodedFileLineCallback() {
+            iterateCodedFile("input/FilesOfVendorCodes/RAIR.TXT", new ICodedFileLineCallback() {
                 @Override
                 public void process(List<String> line) {
                     Airline newAirline = new Airline(line);
@@ -68,7 +67,7 @@ public class AppUtils {
 
             // Load airplanes
             airplaneMap = new HashMap<String, Airplane>();
-            iterateCodedFile("/input/FilesOfVendorCodes/RAEQ.TXT", new ICodedFileLineCallback() {
+            iterateCodedFile("input/FilesOfVendorCodes/RAEQ.TXT", new ICodedFileLineCallback() {
                 @Override
                 public void process(List<String> line) {
                     Airplane newAirplane = new Airplane(line);
@@ -78,7 +77,7 @@ public class AppUtils {
 
             // Load countries
             countryMap = new HashMap<String, Country>();
-            iterateCodedFile("/input/FilesOfVendorCodes/RCNT.TXT", new ICodedFileLineCallback() {
+            iterateCodedFile("input/FilesOfVendorCodes/RCNT.TXT", new ICodedFileLineCallback() {
                 @Override
                 public void process(List<String> line) {
                     Country newCountry = new Country(line);
@@ -101,9 +100,10 @@ public class AppUtils {
      *            What to do with the line parsed as an array of strings
      */
     private static void iterateCodedFile(String filePath, ICodedFileLineCallback callback) {
-        URL fileUrl = AppUtils.class.getResource(filePath);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(new File(fileUrl.toURI())))) {
+        try {
+            InputStream is = AppUtils.class.getClassLoader().getResourceAsStream(filePath);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line;
             while ((line = br.readLine()) != null) {
                 Pattern pattern = Pattern.compile("\"([^\"]*)\"");
@@ -111,12 +111,12 @@ public class AppUtils {
                 List<String> matches = new ArrayList<String>();
 
                 while (matcher.find()) {
-                    // System.out.println(matcher.group(1));
                     matches.add(matcher.group(1));
                 }
 
                 callback.process(matches);
             }
+            br.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
