@@ -1,7 +1,9 @@
 package com.travelport.myproject.service;
 
 import java.io.ByteArrayInputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,9 @@ import com.travelport.schema.air_v39_0.TypeBaseAirSegment;
  */
 @Service
 public class ProcessService {
+
+    private static SimpleDateFormat sSegmentTitleDateFormat = new SimpleDateFormat("EEE, MMM d");
+    private static SimpleDateFormat sSegmentFlightTimeFormat = new SimpleDateFormat("h:mm a");
 
     private static LowFareSearchRsp sResponseObject;
     private Map<String, TypeBaseAirSegment> segmentMap;
@@ -67,13 +72,22 @@ public class ProcessService {
                 TypeBaseAirSegment mappedSegment = segmentMap.get(airSegmentRef.getKey());
                 AirSegmentDto segmentDto = new AirSegmentDto();
 
+                segmentDto.setOrigin(AppUtils.getCityFromCode(mappedSegment.getOrigin()));
+                segmentDto.setDestination(AppUtils.getCityFromCode(mappedSegment.getDestination()));
                 segmentDto.setGroup(mappedSegment.getGroup());
                 segmentDto.setCarrier(AppUtils.getAirlineFromCode(mappedSegment.getCarrier()));
                 segmentDto.setEquipement(AppUtils.getAirplaneFromCode(mappedSegment.getEquipment()));
                 segmentDto.setFlightNumber(mappedSegment.getFlightNumber());
+
                 segmentDto.setFlightTime(mappedSegment.getFlightTime().toString());
-                segmentDto.setArrivalTime(mappedSegment.getArrivalTime());
-                segmentDto.setDepartureTime(mappedSegment.getDepartureTime());
+
+                Calendar orCal = javax.xml.bind.DatatypeConverter.parseDateTime(mappedSegment.getArrivalTime());
+                segmentDto.setArrivalTime(sSegmentFlightTimeFormat.format(orCal.getTime()));
+                segmentDto.setArrivalDate(sSegmentTitleDateFormat.format(orCal.getTime()));
+
+                Calendar depCal = javax.xml.bind.DatatypeConverter.parseDateTime(mappedSegment.getDepartureTime());
+                segmentDto.setDepartureTime(sSegmentFlightTimeFormat.format(depCal.getTime()));
+                segmentDto.setDepartureDate(sSegmentTitleDateFormat.format(depCal.getTime()));
 
                 airSegmentDtoList.add(segmentDto);
             }
