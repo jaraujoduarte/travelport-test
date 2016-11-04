@@ -3,20 +3,100 @@
 <head>
     <title>Travelport Test - Infomation presentation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="css/bootstrap.min.css"></link>
+    <link rel="stylesheet" media="screen" href="css/bootstrap.min.css"></link>
+    <link rel="stylesheet" media="screen" href="css/bootstrap-theme.min.css"></link>
+    <link rel="stylesheet" media="screen" href="css/myproject.css"></link>
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/tether.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/handlebars.js"></script>
 </head>
 <body>
-    <p>Helloo</p>
-
 	<script id="main-template" type="text/x-handlebars-template">
   		<p>You can find me in {{city}}. My address is {{number}} {{street}}.</p>
 	</script>
 
-    <div id="main-cont"></div>
+	<div class="container">
+		<h2>Travelport fare search results</h2>
+		<div id="main-cont" class="panel panel-primary">
+			<div class="panel-heading">Origin: Sevilla, Destination: Madrid - List of pricing options</div>
+			<div class="panel-body">
+				<div class="col-md-8">
+					<div class="row panel panel-info result-div">
+						<div class="col-sm-4">
+							<div class="row">
+								<div class="col-sm-12 price">USD 500</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Iberia Express</div>
+							</div>
+						</div>
+						<div class="col-sm-8">
+							<strong>Depart</strong> — Fri, Nov 4
+							<div class="row">
+								<div class="col-sm-6">8:25p — 9:30p</div>
+								<div class="col-sm-6"><strong>Duration:</strong>1h 5m</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Sevilla (SVQ) — Madrid (MAD)</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Iberia Express 3953</div>
+							</div>
+							<p></p>
+							<strong>Return</strong> — Sat, Nov 6
+							<div class="row">
+								<div class="col-sm-6">8:25p — 9:30p</div>
+								<div class="col-sm-6"><strong>Duration:</strong>1h 5m</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Madrid (MAD) - Sevilla (SVQ)</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Iberia Express 3953</div>
+							</div>
+						</div>
+					</div>
+					<div class="row panel panel-info result-div">
+						<div class="col-sm-4">
+							<div class="row">
+								<div class="col-sm-12 price">USD 500</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Iberia Express</div>
+							</div>
+						</div>
+						<div class="col-sm-8">
+							<strong>Depart</strong> — Fri, Nov 4
+							<div class="row">
+								<div class="col-sm-6">8:25p — 9:30p</div>
+								<div class="col-sm-6"><strong>Duration:</strong>1h 5m</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Sevilla (SVQ) — Madrid (MAD)</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Iberia Express 3953</div>
+							</div>
+							<p></p>
+							<strong>Return</strong> — Sat, Nov 6
+							<div class="row">
+								<div class="col-sm-6">8:25p — 9:30p</div>
+								<div class="col-sm-6"><strong>Duration:</strong>1h 5m</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Madrid (MAD) - Sevilla (SVQ)</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">Iberia Express 3953</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="js/myproject.js"></script>
 </body>

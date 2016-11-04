@@ -16,5 +16,10 @@ $(function () {
   var theCompiledHtml = theTemplate(context);
 
   // Add the compiled html to the page
-  $('#main-cont').html(theCompiledHtml);
+  //$('#main-cont').html(theCompiledHtml);
+
+  
+//  $.getJSON( "search/", function( data ) {
+//		console.log(data);
+//  });
 });
