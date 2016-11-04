@@ -27,11 +27,16 @@ import com.travelport.myproject.model.Country;
 public class AppUtils {
     private static Properties properties = new Properties();
 
+    // Maps to load the information of the files in memory
     private static Map<String, City> cityMap;
     private static Map<String, Airline> airlineMap;
     private static Map<String, Airplane> airplaneMap;
     private static Map<String, Country> countryMap;
 
+    /*
+     * Interface to be used to declare callbacks for the parsing process of the
+     * files with the vendor codes
+     */
     private interface ICodedFileLineCallback {
         void process(List<String> line);
     }
@@ -87,6 +92,15 @@ public class AppUtils {
         }
     }
 
+    /**
+     * Iterates over the file with the vendor codes parsing each line and making
+     * it an object accessible through a key string
+     * 
+     * @param filePath
+     *            The path to the file on the classpath
+     * @param callback
+     *            What to do with the line parsed as an array of strings
+     */
     private static void iterateCodedFile(String filePath, ICodedFileLineCallback callback) {
         URL fileUrl = AppUtils.class.getResource(filePath);
 

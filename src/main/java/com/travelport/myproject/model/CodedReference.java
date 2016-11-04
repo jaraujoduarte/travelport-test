@@ -2,6 +2,10 @@ package com.travelport.myproject.model;
 
 import java.util.List;
 
+/**
+ * Base class for the different models based on the files with the vendor codes
+ * 
+ */
 public class CodedReference {
 
     /**

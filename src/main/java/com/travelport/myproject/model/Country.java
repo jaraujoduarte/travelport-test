@@ -2,6 +2,9 @@ package com.travelport.myproject.model;
 
 import java.util.List;
 
+/*
+ * Model representing a Country
+ */
 public class Country extends CodedReference {
 
     // Extended attributes

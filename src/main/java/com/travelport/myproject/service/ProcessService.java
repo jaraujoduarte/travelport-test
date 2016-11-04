@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import com.travelport.myproject.AppUtils;
 import com.travelport.schema.air_v39_0.LowFareSearchRsp;
 
+/*
+ * Service to orchestrate, obtain and prepare the information 
+ */
 @Service
 public class ProcessService {
 
