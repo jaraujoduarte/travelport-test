@@ -79,7 +79,10 @@ public class ProcessService {
                 segmentDto.setEquipement(AppUtils.getAirplaneFromCode(mappedSegment.getEquipment()));
                 segmentDto.setFlightNumber(mappedSegment.getFlightNumber());
 
-                segmentDto.setFlightTime(mappedSegment.getFlightTime().toString());
+                int totalMins = Integer.parseInt(mappedSegment.getFlightTime().toString());
+                int hours = totalMins / 60;
+                int minutes = totalMins % 60;
+                segmentDto.setFlightTime(hours + "h " + minutes + " m");
 
                 Calendar orCal = javax.xml.bind.DatatypeConverter.parseDateTime(mappedSegment.getArrivalTime());
                 segmentDto.setArrivalTime(sSegmentFlightTimeFormat.format(orCal.getTime()));

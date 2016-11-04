@@ -27,8 +27,8 @@
 						<div class="col-sm-8">
 							<strong>Depart</strong> — {{airSegmentList.0.departureDate}}
 							<div class="row">
-								<div class="col-sm-6">{{airSegmentList.0.departureTime}} — {{airSegmentList.0.arrivalTime}}</div>
-								<div class="col-sm-6"><strong>Duration:</strong>{{airSegmentList.0.flightTime}}</div>
+								<div class="col-sm-8">{{airSegmentList.0.departureTime}} — {{airSegmentList.0.arrivalTime}}</div>
+								<div class="col-sm-4"><strong>Duration: </strong>{{airSegmentList.0.flightTime}}</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-12">{{airSegmentList.0.origin.name}} ({{airSegmentList.0.origin.id}}) — {{airSegmentList.0.destination.name}} ({{airSegmentList.0.destination.id}})</div>
@@ -37,10 +37,11 @@
 								<div class="col-sm-12">{{airSegmentList.0.equipement.name}} - {{airSegmentList.0.carrier.name}}</div>
 							</div>
 							<p></p>
+							<hr>
 							<strong>Return</strong> — {{airSegmentList.1.departureDate}}
 							<div class="row">
-								<div class="col-sm-6">{{airSegmentList.1.departureTime}} — {{airSegmentList.1.arrivalTime}}</div>
-								<div class="col-sm-6"><strong>Duration:</strong>{{airSegmentList.1.flightTime}}</div>
+								<div class="col-sm-8">{{airSegmentList.1.departureTime}} — {{airSegmentList.1.arrivalTime}}</div>
+								<div class="col-sm-4"><strong>Duration: </strong>{{airSegmentList.1.flightTime}}</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-12">{{airSegmentList.1.origin.name}} ({{airSegmentList.1.origin.id}}) — {{airSegmentList.1.destination.name}} ({{airSegmentList.1.destination.id}})</div>
