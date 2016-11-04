@@ -86,7 +86,6 @@ public class AppUtils {
                 }
             });
 
-            System.out.println(countryMap.get("AQ").getName());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -121,6 +120,50 @@ public class AppUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Gets a country based on a code
+     * 
+     * @param code
+     *            Code of the country
+     * @return
+     */
+    public static Country getCountryFromCode(String code) {
+        return countryMap.get(code);
+    }
+
+    /**
+     * Gets an airline based on a code
+     * 
+     * @param code
+     *            Code of the airline
+     * @return
+     */
+    public static Airline getAirlineFromCode(String code) {
+        return airlineMap.get(code);
+    }
+
+    /**
+     * Gets an airplane based on a code
+     * 
+     * @param code
+     *            Code of the airplane
+     * @return
+     */
+    public static Airplane getAirplaneFromCode(String code) {
+        return airplaneMap.get(code);
+    }
+
+    /**
+     * Gets a city based on a code
+     * 
+     * @param code
+     *            Code of the city
+     * @return
+     */
+    public static City getCityFromCode(String code) {
+        return cityMap.get(code);
     }
 
     /**
